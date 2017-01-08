@@ -7,7 +7,6 @@ let http = require('http').Server(app)
 
 app.use('/api', require('../server/api'));
 
-
 http.listen(config.port, function () {
   console.log('Server listening at port %d', config.port);
 });

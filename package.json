@@ -1,0 +1,29 @@
+{
+  "name": "oikos",
+  "version": "1.0.0",
+  "description": "Connected home for homeless - IoT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/EEmery/oikos-IoT.git"
+  },
+  "keywords": [
+    "homeless",
+    "iot",
+    "iokos"
+  ],
+  "author": "Oiko - oikosngo.org",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EEmery/oikos-IoT/issues"
+  },
+  "homepage": "https://github.com/EEmery/oikos-IoT#readme",
+  "dependencies": {
+    "config": "^1.24.0",
+    "express": "^4.14.0",
+    "http": "0.0.0"
+  }
+}

@@ -29,21 +29,36 @@ board.on("ready", function() {
   var food_state;
   var clothes_state;
 
+
   // Reads the database and updates the necessity states
   database.on("value", function(snapshot) {
-    water_state = snapshot.val().water_state;                        // Updates the water state to match database
-    food_state = snapshot.val().food_state;                          // Updates the food state to match database
-    clothes_state = snapshot.val().clothes_state;                    // Updates the clothes state to match database
 
-    // Debug information
-    console.log("Clothes state: " + clothes_state);
-    console.log("Food state: " + food_state);
-    console.log("Water state: " + water_state + "\n");
+    // If there is data about this house
+    if (snapshot.val() != null) {
+      water_state = snapshot.val().water_state;                        // Updates the water state to match database
+      food_state = snapshot.val().food_state;                          // Updates the food state to match database
+      clothes_state = snapshot.val().clothes_state;                    // Updates the clothes state to match database
+
+      // Debug information
+      console.log("Clothes state: " + clothes_state);
+      console.log("Food state: " + food_state);
+      console.log("Water state: " + water_state + "\n");
+    }
+
+    // If there is no data about this house, creates one (happens on the installation of device)
+    else {
+      database.set({
+        "clothes_state": "not in need",
+        "food_state": "not in need",
+        "water_state": "not in need",
+      });
+    }
+
   });
 
 
   // Water button event handler
-  water_button.on("hold", function() {                               // TODO: Check apropriate property "hit"/"hold"
+  water_button.on("hold", function() {
     if (water_state == "not in need") {
       database.update({"water_state": "in need"});
     }

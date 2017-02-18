@@ -1,9 +1,9 @@
-import requests, string
+import grequests, string
 
 # Makes a request to get the database (JSON file). No need for authentication for now
-r = requests.get('https://oikos-iot.firebaseio.com/.json', params={'print': 'pretty'})			# TODO: Properly authenticate
+req_sess = grequests.Session()
+r = req_sess.get('https://oikos-iot.firebaseio.com/.json', params={'print': 'pretty'})			# TODO: Properly authenticate
 database = r.json()
-
 
 def print_database(database=database):
 	"""

@@ -1,5 +1,5 @@
 var HOLD_TIME = 1000;
-var DEVICE_NAME = "house_1/";
+var DEVICE_NAME = "house_2/";
 
 
 // Sets up Firebase
@@ -46,10 +46,9 @@ board.on("ready", function() {
 
     // If there is no data about this house, creates one (happens on the installation of device)
     else {
-      database.set({
-        "clothes_state": "not in need",
-        "food_state": "not in need",
-        "water_state": "not in need",
+      var templateRef = firebase.database().ref("template/");        // Gets the device template
+      templateRef.once("value", function(snapshot) {
+        database.set(snapshot.val());                                // Copy from the template to the device data
       });
     }
 

@@ -1,4 +1,4 @@
-var HOLD_TIME = 1000;
+var HOLD_TIME = 500;
 var DEVICE_NAME = "house_2/";
 
 
@@ -26,22 +26,34 @@ board.on("ready", function() {
   
   // Necessity states placeholders
   var necessity_index = 0;
-  var necessity_list = ["clothes_state", "food_state", "water_state"];
-  var necessity_states = ["not in need", "not in need", "not in need"];
+  var necessity_list = [];
+  var necessity_states = [];
 
   // Reads the database and updates the necessity states
   database.on("value", function(snapshot) {
 
     // If there is data about this house
     if (snapshot.val() != null) {
-      necessity_states[0] = snapshot.val().clothes_state;            // Updates the clothes state to match database
-      necessity_states[1] = snapshot.val().food_state;               // Updates the food state to match database
-      necessity_states[2] = snapshot.val().water_state;              // Updates the water state to match database      
 
-      // DEBUG INFORMATION
-      console.log("Clothes state: " + necessity_states[0]);
-      console.log("Food state: " + necessity_states[1]);
-      console.log("Water state: " + necessity_states[2] + "\n");
+      // If local necessities are empty (happens on start up)
+      if (necessity_list.length == 0) {
+        for (necessity in snapshot.val()) {
+          necessity_list.push(necessity);
+          necessity_states.push(snapshot.val()[necessity]);
+        }
+        console.log("Firebase initialized\nReady to go!");
+      }
+
+      // Once local necessities are started up
+      else {
+        var i = 0;
+        for (necessity in snapshot.val()) {
+          necessity_states[i] = snapshot.val()[necessity];
+          console.log(necessity + ": " + necessity_states[i]);
+          i = i + 1;
+        }
+        console.log("");
+      }
     }
 
     // If there is no data about this house, creates one (happens on the installation of device)
@@ -58,7 +70,7 @@ board.on("ready", function() {
   // Right button event handler
   right_button.on("hold", function() {
     necessity_index = (necessity_index + 1) % necessity_list.length;
-    console.log(necessity_index);                                    // DEBUG INFORMATION
+    console.log(necessity_index);
   });
 
   // Left button event handler
@@ -69,7 +81,7 @@ board.on("ready", function() {
     else {
       necessity_index = necessity_index - 1;
     }
-    console.log(necessity_index);                                    // DEBUG INFORMATION
+    console.log(necessity_index);
   });
 
   // Selection button event handler

@@ -1,2 +1,3 @@
 arduino/node_modules
 arduino/oikos-gateways-key.json
+*.pyc

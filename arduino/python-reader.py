@@ -1,18 +1,23 @@
-import grequests, string
+# "https://oikos-iot.firebaseio.com/.json"
+# "oitkos-gateways@oikos-iot.iam.gserviceaccount.com"
 
-# Makes a request to get the database (JSON file). No need for authentication for now
-req_sess = grequests.Session()
-r = req_sess.get('https://oikos-iot.firebaseio.com/.json', params={'print': 'pretty'})			# TODO: Properly authenticate
-database = r.json()
+import pyrebase
+
+# Sets up firebase
+config = {
+	"apiKey": "AIzaSyABm-LZcGGS9fWHTZVg0PTxGrRJH0rtlc4",
+	"authDomain": "oikos-iot.firebaseapp.com",
+	"databaseURL": "https://oikos-iot.firebaseio.com",
+	"storageBucket": "oikos-iot.appspot.com",
+  	"serviceAccount": "./oikos-gateways-key.json"
+}
+firebase = pyrebase.initialize_app(config)
+database = firebase.database().get().val()
 
 def print_database(database=database):
-	"""
-	Prints the database in a more friendly way.
-	"""
-	for house in database.keys():
-		print house
-		for state in database[house].keys():
-			print state + ": " + str(database[house][state])
-		print ""
+	for house in database:
+		print "\n" + house
+		for necessity in database[house]:
+			print "    " + necessity + ": " + database[house][necessity]
 
 print_database()

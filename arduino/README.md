@@ -49,7 +49,7 @@ Prints the actual state of the database. Usage:
 $python print-database.py
 ```
 
-##### remove-ecessities.py
+##### remove-necessities.py
 
 Removes necessities to houses in the firebase database. Both houses and necessities must be passed as arguments in the call. Usage:
 ```

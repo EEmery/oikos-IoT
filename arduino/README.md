@@ -27,13 +27,13 @@ In this layout, each necessity has it's own button. When a button is holded, the
 
 #### arduino-uno-layout2.js
 
-In this layout, there are only three buttons, two for navigation arround the necessities and one for selection. When the selection button is holded, the selected necessity toggle the status.
+In this layout, there are only three buttons, two for navigation arround the necessities and one for selection. When the selection button is holded, the selected necessity toggles the status.
 
 #### admin-scripts (folder)
 
 _Note: For all the following python scripts, Windows users do not need to call `python` before the command._
 
-##### add-ecessities.py
+##### add-necessities.py
 
 Adds necessities to houses in the firebase database. Both houses and necessities must be passed as arguments in the call. Usage:
 ```

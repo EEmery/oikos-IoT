@@ -7,8 +7,9 @@ _This repository folder is dedicated to the development of the Oikos Gateways. T
 
 This prototype is build on [Arduino Uno](https://www.arduino.cc/en/Main/ArduinoBoardUno) boards using the robotics and IoT framework for JavaScript, [Johnny-Five](https://github.com/rwaldron/johnny-five).
 
-* First, install Node.js from <https://nodejs.org/>
-* Then, with npm, install the the needed packages
+* First, install Python 2.7 from <https://python.org>
+* Then, install Node.js from <https://nodejs.org/>
+* With npm, install the the needed packages for the JavaScript scripts
 ```
 $npm install johnny-five
 $npm install firebase-admin
@@ -37,10 +38,10 @@ _Note: For all the following python scripts, Windows users do not need to call `
 
 Adds necessities to houses in the firebase database. Both houses and necessities must be passed as arguments in the call. Usage:
 ```
-$python add-necessities.py -h house_1 house_2 ... -n necessity1 necessity2 ...
-$python add-necessities.py --house house_1 ... --necessities necessity1 ...
+$python add-necessities.py -h house_1 house_2 [...] -n necessity1 necessity2 [...]
+$python add-necessities.py --house house_1 [...] --necessities necessity1 [...]
 ```
-If after `-h` or `--house` there is `all` the script applies the necessity to all houses.
+If after `-h` or `--house` there is `all` the script applies the necessities to all houses.
 
 ##### print-database.py
 
@@ -53,10 +54,10 @@ $python print-database.py
 
 Removes necessities to houses in the firebase database. Both houses and necessities must be passed as arguments in the call. Usage:
 ```
-$python remove-necessities.py -h house_1 house_2 ... -n necessity1 necessity2 ...
-$python remove-necessities.py --house house_1 ... --necessities necessity1 ...
+$python remove-necessities.py -h house_1 house_2 [...] -n necessity1 necessity2 [...]
+$python remove-necessities.py --house house_1 [...] --necessities necessity1 [...]
 ```
-If after `-h` or `--house` there is `all` the script removes the necessity in all houses.
+If after `-h` or `--house` there is `all` the script removes the necessities in all houses.
 
 ##### uniformizer.py
 

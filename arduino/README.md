@@ -1,7 +1,7 @@
 # Oikos IoT
 ## Arduino Uno + Firebase
 
-_This repository folder is dedicated to the development of the Oikos Gateways. To learn more about Oikos, visit our website: <http://oikosngo.org>_
+_This repository folder is dedicated to the development of the Oikos Gateways. To learn more about Oikos, visit [our website](http://oikosngo.org)._
 
 ### Setting Up
 

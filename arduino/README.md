@@ -7,14 +7,60 @@ _This repository folder is dedicated to the development of the Oikos Gateways. T
 
 This prototype is build on [Arduino Uno](https://www.arduino.cc/en/Main/ArduinoBoardUno) boards using the robotics and IoT framework for JavaScript, [Johnny-Five](https://github.com/rwaldron/johnny-five).
 
-1. First, install Node.js from <https://nodejs.org/>
-2. Then, with npm, install the the needed packages
+* First, install Node.js from <https://nodejs.org/>
+* Then, with npm, install the the needed packages
 ```
 $npm install johnny-five
 $npm install firebase-admin
 $npm install python-shell
 ```
-3. For the Python scripts properly communicate with Firebase, install `pyrebase`
+* For the Python scripts properly communicate with Firebase, install `pyrebase`
 ```
 $pip install pyrebase
+```
+
+### About the files
+
+#### arduino-uno-layout1.js
+
+In this layout, each necessity has it's own button. When a button is holded, the necessity binded to it toggles it status.
+
+#### arduino-uno-layout2.js
+
+In this layout, there are only three buttons, two for navigation arround the necessities and one for selection. When the selection button is holded, the selected necessity toggle the status.
+
+#### admin-scripts (folder)
+
+_Note: For all the following python scripts, Windows users do not need to call `python` before the command._
+
+##### add-ecessities.py
+
+Adds necessities to houses in the firebase database. Both houses and necessities must be passed as arguments in the call. Usage:
+```
+$python add-necessities.py -h house_1 house_2 ... -n necessity1 necessity2 ...
+$python add-necessities.py --house house_1 ... --necessities necessity1 ...
+```
+If after `-h` or `--house` there is `all` the script applies the necessity to all houses.
+
+##### print-database.py
+
+Prints the actual state of the database. Usage:
+```
+$python print-database.py
+```
+
+##### remove-ecessities.py
+
+Removes necessities to houses in the firebase database. Both houses and necessities must be passed as arguments in the call. Usage:
+```
+$python remove-necessities.py -h house_1 house_2 ... -n necessity1 necessity2 ...
+$python remove-necessities.py --house house_1 ... --necessities necessity1 ...
+```
+If after `-h` or `--house` there is `all` the script removes the necessity in all houses.
+
+##### uniformizer.py
+
+Reads the database template and changes houses keys in order to give them the same necessities. Key values are mainteined. New keys are created with the same value from the template.
+```
+$python uniformizer.py
 ```

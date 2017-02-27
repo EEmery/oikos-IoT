@@ -34,7 +34,7 @@ In this layout, there are only three buttons, two for navigation arround the nec
 
 _Note: For all the following python scripts, Windows users do not need to call `python` before the command._
 
-#### add-necessities.py
+##### add-necessities.py
 
 Adds necessities to houses in the firebase database. Both houses and necessities must be passed as arguments in the call. Usage:
 ```
@@ -43,14 +43,14 @@ $python add-necessities.py --house house_1 [...] --necessities necessity1 [...]
 ```
 If after `-h` or `--house` there is `all` the script applies the necessities to all houses.
 
-#### print-database.py
+##### print-database.py
 
 Prints the actual state of the database. Usage:
 ```
 $python print-database.py
 ```
 
-#### remove-necessities.py
+##### remove-necessities.py
 
 Removes necessities to houses in the firebase database. Both houses and necessities must be passed as arguments in the call. Usage:
 ```
@@ -59,7 +59,7 @@ $python remove-necessities.py --house house_1 [...] --necessities necessity1 [..
 ```
 If after `-h` or `--house` there is `all` the script removes the necessities in all houses.
 
-#### uniformizer.py
+##### uniformizer.py
 
 Reads the database template and changes houses keys in order to give them the same necessities. Key values are mainteined. New keys are created with the same value from the template.
 ```

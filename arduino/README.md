@@ -47,6 +47,9 @@ _Note: For all the following python scripts, Windows users do not need to call `
 Adds necessities to houses in the firebase database. Both houses and necessities must be passed as arguments in the call. Usage:
 ```
 $python add-necessities.py -h house_1 house_2 [...] -n necessity1 necessity2 [...]
+```
+or
+```
 $python add-necessities.py --house house_1 [...] --necessities necessity1 [...]
 ```
 If after `-h` or `--house` there is `all`, the script applies the necessities to all houses.
@@ -63,6 +66,9 @@ $python print-database.py
 Removes necessities to houses in the firebase database. Both houses and necessities must be passed as arguments in the call. Usage:
 ```
 $python remove-necessities.py -h house_1 house_2 [...] -n necessity1 necessity2 [...]
+```
+or
+```
 $python remove-necessities.py --house house_1 [...] --necessities necessity1 [...]
 ```
 If after `-h` or `--house` there is `all`, the script removes the necessities in all houses.
